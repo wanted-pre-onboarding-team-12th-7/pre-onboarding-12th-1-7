@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { StyledSignFormContainer, StyledSignFormTitle, StyledSignFormBox } from './SignForm.styled'
 import { postSignUp, postSignin } from '../../../apis/auth'
 
-type Props = {
+interface SignFormProps {
   isSignUp: boolean
   setIsAuth: React.Dispatch<React.SetStateAction<string>>
 }
 
-function SignForm({ isSignUp, setIsAuth }: Props) {
+function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)

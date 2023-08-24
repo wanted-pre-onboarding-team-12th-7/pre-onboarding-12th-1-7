@@ -1,10 +1,10 @@
 import SignForm from '../components/common/Sign/SignForm'
 
-type Props = {
+interface SignupProps {
   setIsAuth: React.Dispatch<React.SetStateAction<string>>
 }
 
-function Signup({ setIsAuth }: Props) {
+function Signup({ setIsAuth }: SignupProps) {
   return (
     <div>
       <SignForm isSignUp={true} setIsAuth={setIsAuth} />
