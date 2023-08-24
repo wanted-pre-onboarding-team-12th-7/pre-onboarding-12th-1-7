@@ -55,7 +55,6 @@ function SignForm({ isSignUp, setToken }: SignFormProps) {
         .then((res: SigninResponse) => {
           localStorage.setItem('accessToken', res.data.access_token)
           setToken(res.data.access_token)
-          navigate('/todo')
         })
         .catch((err) => {
           const message = err.response.data.message
@@ -98,6 +97,7 @@ function SignForm({ isSignUp, setToken }: SignFormProps) {
           data-testid={isSignUp ? 'signup-button' : 'signin-button'}
           disabled={!(isValidEmail && isValidPassword)}
           onClick={sendData}
+          type="button"
         >
           {isSignUp ? '회원가입' : '로그인'}
         </StyledSignFormButton>

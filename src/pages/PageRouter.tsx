@@ -21,14 +21,12 @@ function PublicRoute({ token, fallback, children }: RouteProps) {
 }
 
 function PageRouter() {
-  const [token, setToken] = useState<string>('')
+  const [token, setToken] = useState<string | null>('')
 
   useEffect(() => {
-    if (!localStorage.getItem('accessToken')) {
-      setToken('')
-      return
-    }
-    setToken(JSON.stringify(localStorage.getItem('accessToken')))
+    localStorage.getItem('accessToken') !== null
+      ? setToken('')
+      : setToken(localStorage.getItem('accessToken'))
   }, [])
 
   return (
