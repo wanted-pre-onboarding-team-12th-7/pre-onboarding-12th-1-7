@@ -26,7 +26,8 @@
     "eject": "react-scripts eject",
     "postinstall": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "lint": "eslint --cache .",
+    "cleanup-branches": "echo git remote prune origin && git branch -vv | grep ': gone]'| awk '{print $1}' | xargs git branch -D"
   },
   "eslintConfig": {
     "extends": [
