@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { SignFormProps, SigninResponse } from './types'
 import { StyledSignFormContainer, StyledSignFormTitle, StyledSignFormBox } from './SignForm.styled'
 import { postSignup, postSignin } from '../../../apis/auth'
-
-interface SignFormProps {
-  isSignUp: boolean
-  setIsAuth: React.Dispatch<React.SetStateAction<string>>
-}
 
 function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
   const [email, setEmail] = useState('')
@@ -48,7 +44,7 @@ function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
 
     if (isSignUp === false) {
       postSignin(data.email, data.password)
-        .then((res) => {
+        .then((res: SigninResponse) => {
           localStorage.setItem('access_token', res.data.access_token)
           setIsAuth(res.data.access_token)
           navigate('/todo')

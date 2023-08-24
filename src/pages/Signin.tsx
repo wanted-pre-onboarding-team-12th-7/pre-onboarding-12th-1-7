@@ -1,10 +1,7 @@
 import SignForm from '../components/common/Sign/SignForm'
+import { SignProps } from '../components/common/Sign/types'
 
-interface SigninProps {
-  setIsAuth: React.Dispatch<React.SetStateAction<string>>
-}
-
-function Signin({ setIsAuth }: SigninProps) {
+function Signin({ setIsAuth }: SignProps) {
   return (
     <div>
       <SignForm isSignUp={false} setIsAuth={setIsAuth} />
