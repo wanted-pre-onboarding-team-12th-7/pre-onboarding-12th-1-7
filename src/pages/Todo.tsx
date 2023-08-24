@@ -10,7 +10,7 @@ function Todo() {
       <TodoList />
       <button
         onClick={() => {
-          localStorage.removeItem('access_token')
+          localStorage.removeItem('accessToken')
           navigate(0)
         }}
       >

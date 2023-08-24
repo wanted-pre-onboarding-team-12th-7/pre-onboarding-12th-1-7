@@ -5,7 +5,7 @@ import { SignFormProps, SigninResponse } from './types'
 import { StyledSignFormContainer, StyledSignFormTitle, StyledSignFormBox } from './SignForm.styled'
 import { postSignup, postSignin } from '../../../apis/auth'
 
-function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
+function SignForm({ isSignUp, setToken }: SignFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
@@ -45,8 +45,8 @@ function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
     if (isSignUp === false) {
       postSignin(data.email, data.password)
         .then((res: SigninResponse) => {
-          localStorage.setItem('access_token', res.data.access_token)
-          setIsAuth(res.data.access_token)
+          localStorage.setItem('accessToken', res.data.access_token)
+          setToken(res.data.access_token)
           navigate('/todo')
         })
         .catch((err) => {
