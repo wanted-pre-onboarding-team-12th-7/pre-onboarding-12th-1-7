@@ -9,7 +9,7 @@ export const StyledSignFormTitle = styled.div`
   text-align: center;
 `
 
-export const StyledSignFormBox = styled.div`
+export const StyledSignFormBox = styled.form`
   width: 50%;
   margin: 20px auto;
   display: flex;
