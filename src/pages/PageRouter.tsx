@@ -5,27 +5,49 @@ import Todo from './Todo'
 import Signin from './Signin'
 import Signup from './Signup'
 
-interface PublicRouteProps {
-  isSignIn: boolean
+interface RouteProps {
+  isAuth: string | null
+  children: JSX.Element
+}
+
+function ProtectedRoute({ isAuth, children }: RouteProps) {
+  return isAuth ? children : <Navigate to="/signin" replace />
+}
+function PublicRoute({ isAuth, children }: RouteProps) {
+  return isAuth ? <Navigate to="/todo" replace /> : children
 }
 
 function PageRouter() {
   const isAuth = localStorage.getItem('access_token')
 
-  function ProtectedRoute() {
-    return isAuth ? <Todo /> : <Navigate to="/signin" />
-  }
-  function PublicRoute({ isSignIn }: PublicRouteProps) {
-    return isAuth ? <Navigate to="/todo" /> : isSignIn ? <Signin /> : <Signup />
-  }
-
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/todo" element={<ProtectedRoute />} />
-        <Route path="/signin" element={<PublicRoute isSignIn={true} />} />
-        <Route path="/signup" element={<PublicRoute isSignIn={false} />} />
+        <Route
+          path="/todo"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Todo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <PublicRoute isAuth={isAuth}>
+              <Signin />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute isAuth={isAuth}>
+              <Signup />
+            </PublicRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )

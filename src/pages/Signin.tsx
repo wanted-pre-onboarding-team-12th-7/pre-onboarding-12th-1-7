@@ -14,6 +14,14 @@ function Signin() {
       >
         홈으로
       </SampleButton>
+      <button
+        onClick={() => {
+          localStorage.setItem('access_token', '12340')
+          navigate(0)
+        }}
+      >
+        accessToken 추가
+      </button>
     </div>
   )
 }
