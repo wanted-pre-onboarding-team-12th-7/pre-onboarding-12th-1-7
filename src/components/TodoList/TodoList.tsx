@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { styled } from 'styled-components'
 
 import TodoItem from '../TodoItem/TodoItem'
 import { TodoType } from './types'
@@ -50,34 +51,81 @@ function TodoList() {
   }, [])
 
   return (
-    <div>
-      <div>
-        <label htmlFor="addTodo">
-          <input
+    <TodoListWrapper>
+      <TodoListHead>
+        <StyledLabel htmlFor="addTodo">
+          <StyledInput
             id="addTodo"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
             data-testid="new-todo-input"
           />
-        </label>
-        <button onClick={() => createTodo(newTodo)} type="button" data-testid="new-todo-add-button">
+        </StyledLabel>
+        <StyledButton
+          onClick={() => createTodo(newTodo)}
+          type="button"
+          data-testid="new-todo-add-button"
+        >
           추가
-        </button>
-      </div>
-      <ul>
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            id={todo.id}
-            todo={todo.todo}
-            isCompleted={todo.isCompleted}
-            updateTodo={updateTodo}
-            deleteTodo={deleteTodo}
-          />
-        ))}
-      </ul>
-    </div>
+        </StyledButton>
+      </TodoListHead>
+      <TodoListBody>
+        <FlexUl>
+          {todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              id={todo.id}
+              todo={todo.todo}
+              isCompleted={todo.isCompleted}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo}
+            />
+          ))}
+        </FlexUl>
+      </TodoListBody>
+    </TodoListWrapper>
   )
 }
 
 export default TodoList
+
+const TodoListWrapper = styled.div`
+  width: 100%;
+`
+
+const TodoListHead = styled.div`
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+const TodoListBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+`
+
+const StyledLabel = styled.label`
+  flex-grow: 1;
+`
+
+const StyledInput = styled.input`
+  border: 1px solid #9a9a9a;
+  border-radius: 12px;
+  padding: 8px 8px;
+  margin-right: 12px;
+  width: 100%;
+`
+const StyledButton = styled.button`
+  border: 1px solid #9a9a9a;
+  border-radius: 12px;
+  padding: 8px 8px;
+`
+const FlexUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+`

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { css, styled } from 'styled-components'
+import { PageWrapper } from './PageLayout'
 
 function Home() {
   const navigate = useNavigate()
@@ -36,17 +37,6 @@ function Home() {
     </PageWrapper>
   )
 }
-
-const PageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  min-height: 100%;
-  padding: 50px;
-`
 
 const ButtonWrapper = styled.div`
   display: flex;
