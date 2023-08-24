@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
+import SignForm from '../components/common/Sign/SignForm'
 
 function Signin() {
   const navigate = useNavigate()
 
   return (
     <div>
-      로그인 페이지입니다
+      <SignForm isSignUp={false} />
       <SampleButton
         onClick={() => {
           navigate('/')
@@ -14,14 +15,6 @@ function Signin() {
       >
         홈으로
       </SampleButton>
-      <button
-        onClick={() => {
-          localStorage.setItem('access_token', '12340')
-          navigate(0)
-        }}
-      >
-        accessToken 추가
-      </button>
     </div>
   )
 }
@@ -29,7 +22,9 @@ function Signin() {
 const SampleButton = styled.div`
   width: fit-content;
   height: fit-content;
+
   background-color: skyblue;
+
   cursor: pointer;
 `
 
