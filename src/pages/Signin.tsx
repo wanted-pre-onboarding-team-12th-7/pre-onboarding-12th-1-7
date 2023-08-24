@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
+import SignForm from '../components/common/Sign/SignForm'
 
 function Signin() {
   const navigate = useNavigate()
 
   return (
     <div>
-      로그인 페이지입니다
+      <SignForm isSignUp={false} />
       <SampleButton
         onClick={() => {
           navigate('/')
