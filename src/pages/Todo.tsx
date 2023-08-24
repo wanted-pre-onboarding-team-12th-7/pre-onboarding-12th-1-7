@@ -1,23 +1,35 @@
 import { useNavigate } from 'react-router-dom'
+import { styled } from 'styled-components'
 import TodoList from '../components/TodoList/TodoList'
+import { PageWrapper } from './PageLayout'
 
 function Todo() {
   const navigate = useNavigate()
 
   return (
-    <div>
-      투두리스트 페이지입니다.
-      <TodoList />
+    <PageWrapper>
+      <PageTitle>투두리스트 페이지입니다.</PageTitle>
+      <PageBody>
+        <TodoList />
+      </PageBody>
       <button
         onClick={() => {
           localStorage.removeItem('accessToken')
           navigate(0)
         }}
       >
-        accessToken 삭제
+        로그아웃
       </button>
-    </div>
+    </PageWrapper>
   )
 }
 
 export default Todo
+
+const PageTitle = styled.h1`
+  margin-bottom: 10px;
+`
+
+const PageBody = styled.section`
+  width: 80%;
+`

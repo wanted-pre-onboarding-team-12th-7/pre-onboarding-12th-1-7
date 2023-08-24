@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import TodoItemProps from './types'
+import styled from 'styled-components'
 
 function TodoItem({ id, todo, isCompleted, updateTodo, deleteTodo }: TodoItemProps) {
   const [todoCheck, setTodoCheck] = useState(isCompleted)
@@ -41,41 +42,87 @@ function TodoItem({ id, todo, isCompleted, updateTodo, deleteTodo }: TodoItemPro
   }
 
   return (
-    <li>
-      <label>
-        <input type="checkbox" checked={todoCheck} onChange={onTodoCheckChanged} />
-        {isEditMode ? (
-          <input
-            data-testid="modify-input"
-            type="text"
-            onChange={onTodoModifyChanged}
-            value={todoModify}
-          />
-        ) : (
-          <span>{todo}</span>
-        )}
-      </label>
+    <Li>
+      <CheckboxSpanWrapper>
+        <StyledLabel>
+          <StyledCheckbox type="checkbox" checked={todoCheck} onChange={onTodoCheckChanged} />
+          {isEditMode ? (
+            <input
+              data-testid="modify-input"
+              type="text"
+              onChange={onTodoModifyChanged}
+              value={todoModify}
+            />
+          ) : (
+            <StyledSpan>{todo}</StyledSpan>
+          )}
+        </StyledLabel>
+      </CheckboxSpanWrapper>
       {isEditMode ? (
-        <>
-          <button data-testid="submit-button" onClick={onSubmitButtonClicked}>
+        <ButtonWrapper>
+          <StyledButton data-testid="submit-button" onClick={onSubmitButtonClicked}>
             제출
-          </button>
-          <button data-testid="cancel-button" onClick={onCancelButtonClicked}>
+          </StyledButton>
+          <StyledButton data-testid="cancel-button" onClick={onCancelButtonClicked}>
             취소
-          </button>
-        </>
+          </StyledButton>
+        </ButtonWrapper>
       ) : (
-        <>
-          <button data-testid="modify-button" onClick={onEditButtonClicked}>
+        <ButtonWrapper>
+          <StyledButton data-testid="modify-button" onClick={onEditButtonClicked}>
             수정
-          </button>
-          <button data-testid="delete-button" onClick={onDeleteButtonClicked}>
+          </StyledButton>
+          <StyledButton data-testid="delete-button" onClick={onDeleteButtonClicked}>
             삭제
-          </button>
-        </>
+          </StyledButton>
+        </ButtonWrapper>
       )}
-    </li>
+    </Li>
   )
 }
 
 export default TodoItem
+
+const StyledLabel = styled.label`
+  display: flex;
+`
+
+const StyledCheckbox = styled.input`
+  margin-right: 10px;
+`
+
+const Li = styled.li`
+  display: flex;
+  padding: 10px;
+  gap: 5%;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  border: 2px solid black;
+`
+const CheckboxSpanWrapper = styled.div`
+  max-width: 50%;
+  flex: 1;
+`
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+
+  & > button {
+    flex-shrink: 0;
+  }
+`
+const StyledButton = styled.button`
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 2px;
+`
+
+const StyledSpan = styled.p`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  width: 100%;
+  height: 20px;
+`
