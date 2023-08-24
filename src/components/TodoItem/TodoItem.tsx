@@ -14,8 +14,8 @@ function TodoItem({ id, todo, isCompleted, updateTodo, deleteTodo }: TodoItemPro
 
   // TODO input창의 값이 변경 되었을 때 (수정모드)
   const onTodoModifyChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setTodoModify(value)
+    const modifiedValue = e.target.value
+    setTodoModify(modifiedValue)
   }
 
   // 수정 버튼을 눌렀을 때
