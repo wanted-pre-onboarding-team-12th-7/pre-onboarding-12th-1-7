@@ -14,7 +14,7 @@ export const StyledSignFormTitle = styled.div`
 `
 
 export const StyledSignFormBox = styled.form`
-  displat: block;
+  display: block;
 `
 
 export const StyledSignFormInput = styled.input`
@@ -37,7 +37,7 @@ export const StyledSignFormMsg = styled.p`
   }
 `
 export const StyledSignFormButton = styled.button`
-  dispay: block;
+  display: block;
   margin-top: 30px;
   width: 100%;
   height: 40px;
