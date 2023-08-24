@@ -17,16 +17,14 @@ function SignForm({ isSignUp }: Props) {
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-
     setEmail(value)
-    setIsValidEmail(value.indexOf('@') !== -1)
+    setIsValidEmail(/@/.test(value))
   }
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-
     setPassword(value)
-    setIsValidPassword(value.length >= 8)
+    setIsValidPassword(/.{8,}$/.test(value))
   }
 
   const sendData = () => {
@@ -37,6 +35,7 @@ function SignForm({ isSignUp }: Props) {
     if (isSignUp) {
       postSignUp(data.email, data.password)
         .then(() => {
+          alert('회원가입 완료!')
           navigate('/signin')
         })
         .catch((err) => {
@@ -46,9 +45,10 @@ function SignForm({ isSignUp }: Props) {
         })
     }
 
-    if (!isSignUp) {
+    if (isSignUp === false) {
       postSignin(data.email, data.password)
         .then((res) => {
+          console.log(res.data.access_token)
           localStorage.setItem('access_token', res.data.access_token)
           navigate('/todo')
         })
@@ -70,12 +70,24 @@ function SignForm({ isSignUp }: Props) {
           placeholder="이메일 주소"
           onChange={onChangeEmail}
         />
+        {isValidEmail === true ? (
+          <p>사용가능한 이메일입니다.</p>
+        ) : (
+          <p>이메일에는 @가 들어가야합니다.</p>
+        )}
+
         <input
           data-testid="password-input"
           type="password"
           placeholder="비밀번호 (8자리 이상)"
           onChange={onChangePassword}
         />
+        {isValidPassword === true ? (
+          <p>사용가능한 비밀번호입니다.</p>
+        ) : (
+          <p>비밀번호는 8자 이상으로 입력해주세요.</p>
+        )}
+
         <Link to={isSignUp ? '/signin' : '/signup'}>
           {isSignUp ? '로그인 페이지로' : '회원가입 페이지로'}
         </Link>
