@@ -45,7 +45,7 @@ function PageRouter() {
           path="/signin"
           element={
             <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signin />
+              <Signin setIsAuth={setIsAuth} />
             </PublicRoute>
           }
         />
@@ -53,7 +53,7 @@ function PageRouter() {
           path="/signup"
           element={
             <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signup />
+              <Signup setIsAuth={setIsAuth} />
             </PublicRoute>
           }
         />
