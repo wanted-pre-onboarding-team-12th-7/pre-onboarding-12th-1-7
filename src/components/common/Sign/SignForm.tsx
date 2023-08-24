@@ -6,9 +6,10 @@ import { postSignUp, postSignin } from '../../../apis/auth'
 
 type Props = {
   isSignUp: boolean
+  setIsAuth: React.Dispatch<React.SetStateAction<string>>
 }
 
-function SignForm({ isSignUp }: Props) {
+function SignForm({ isSignUp, setIsAuth }: Props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
@@ -50,6 +51,7 @@ function SignForm({ isSignUp }: Props) {
         .then((res) => {
           console.log(res.data.access_token)
           localStorage.setItem('access_token', res.data.access_token)
+          setIsAuth(res.data.access_token)
           navigate('/todo')
         })
         .catch((err) => {
@@ -81,6 +83,7 @@ function SignForm({ isSignUp }: Props) {
           type="password"
           placeholder="비밀번호 (8자리 이상)"
           onChange={onChangePassword}
+          autoComplete="false"
         />
         {isValidPassword === true ? (
           <p>사용가능한 비밀번호입니다.</p>
@@ -91,6 +94,7 @@ function SignForm({ isSignUp }: Props) {
         <Link to={isSignUp ? '/signin' : '/signup'}>
           {isSignUp ? '로그인 페이지로' : '회원가입 페이지로'}
         </Link>
+        <Link to="/">홈으로</Link>
 
         <button
           data-testid={isSignUp ? 'signup-button' : 'signin-button'}
