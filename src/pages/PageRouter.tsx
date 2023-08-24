@@ -7,14 +7,15 @@ import Signup from './Signup'
 
 interface RouteProps {
   isAuth: string | null
+  fallback: string
   children: JSX.Element
 }
 
-function ProtectedRoute({ isAuth, children }: RouteProps) {
-  return isAuth ? children : <Navigate to="/signin" replace />
+function ProtectedRoute({ isAuth, fallback, children }: RouteProps) {
+  return isAuth ? children : <Navigate to={fallback} replace />
 }
-function PublicRoute({ isAuth, children }: RouteProps) {
-  return isAuth ? <Navigate to="/todo" replace /> : children
+function PublicRoute({ isAuth, fallback, children }: RouteProps) {
+  return isAuth ? <Navigate to={fallback} replace /> : children
 }
 
 function PageRouter() {
@@ -27,7 +28,7 @@ function PageRouter() {
         <Route
           path="/todo"
           element={
-            <ProtectedRoute isAuth={isAuth}>
+            <ProtectedRoute isAuth={isAuth} fallback="/signin">
               <Todo />
             </ProtectedRoute>
           }
@@ -35,7 +36,7 @@ function PageRouter() {
         <Route
           path="/signin"
           element={
-            <PublicRoute isAuth={isAuth}>
+            <PublicRoute isAuth={isAuth} fallback="/todo">
               <Signin />
             </PublicRoute>
           }
@@ -43,7 +44,7 @@ function PageRouter() {
         <Route
           path="/signup"
           element={
-            <PublicRoute isAuth={isAuth}>
+            <PublicRoute isAuth={isAuth} fallback="/todo">
               <Signup />
             </PublicRoute>
           }
