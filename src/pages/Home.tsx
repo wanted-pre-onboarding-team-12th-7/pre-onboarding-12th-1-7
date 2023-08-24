@@ -24,7 +24,6 @@ function Home() {
         >
           로그인
         </SignButton>
-
         <SignButton
           isSignin={true}
           onClick={() => {
@@ -44,7 +43,6 @@ const StyledHome = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 20px;
-
   width: 100%;
   height: 100vh;
 `
@@ -55,7 +53,6 @@ const ButtonWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 10px;
-
   width: 100%;
 `
 
@@ -63,11 +60,9 @@ const SignButton = styled.button<{ isSignin: boolean }>`
   width: 100%;
   height: 32px;
   max-width: 425px;
-
-  cursor: pointer;
-
   border: 1px solid gray;
   border-radius: 5px;
+  cursor: pointer;
 
   ${({ isSignin }) => css`
     background-color: ${isSignin ? 'black' : 'white'};

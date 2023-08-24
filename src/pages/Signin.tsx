@@ -21,9 +21,7 @@ function Signin() {
 const SampleButton = styled.div`
   width: fit-content;
   height: fit-content;
-
   background-color: skyblue;
-
   cursor: pointer;
 `
 
