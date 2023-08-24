@@ -49,7 +49,6 @@ function SignForm({ isSignUp, setIsAuth }: Props) {
     if (isSignUp === false) {
       postSignin(data.email, data.password)
         .then((res) => {
-          console.log(res.data.access_token)
           localStorage.setItem('access_token', res.data.access_token)
           setIsAuth(res.data.access_token)
           navigate('/todo')
