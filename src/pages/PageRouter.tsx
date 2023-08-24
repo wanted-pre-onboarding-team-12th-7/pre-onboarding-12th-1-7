@@ -5,6 +5,7 @@ import Home from './Home'
 import Todo from './Todo'
 import Signin from './Signin'
 import Signup from './Signup'
+import NotFound from './NotFound'
 
 interface RouteProps {
   isAuth: string | null
@@ -57,6 +58,7 @@ function PageRouter() {
             </PublicRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
