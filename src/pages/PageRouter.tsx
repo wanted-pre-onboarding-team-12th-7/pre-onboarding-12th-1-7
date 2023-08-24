@@ -5,7 +5,7 @@ import Todo from './Todo'
 import Signin from './Signin'
 import Signup from './Signup'
 
-interface IPublicRoute {
+interface PublicRouteProps {
   isSignIn: boolean
 }
 
@@ -15,7 +15,7 @@ function PageRouter() {
   function ProtectedRoute() {
     return isAuth ? <Todo /> : <Navigate to="/signin" />
   }
-  function PublicRoute({ isSignIn }: IPublicRoute) {
+  function PublicRoute({ isSignIn }: PublicRouteProps) {
     return isAuth ? <Navigate to="/todo" /> : isSignIn ? <Signin /> : <Signup />
   }
 
