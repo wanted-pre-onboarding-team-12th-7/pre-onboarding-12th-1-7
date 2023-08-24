@@ -8,26 +8,27 @@ import Signup from './Signup'
 import NotFound from './NotFound'
 
 interface RouteProps {
-  isAuth: string | null
+  token: string | null
   fallback: string
   children: JSX.Element
 }
 
-function ProtectedRoute({ isAuth, fallback, children }: RouteProps) {
-  return isAuth ? children : <Navigate to={fallback} replace />
+function ProtectedRoute({ token, fallback, children }: RouteProps) {
+  return token ? children : <Navigate to={fallback} replace />
 }
-function PublicRoute({ isAuth, fallback, children }: RouteProps) {
-  return isAuth ? <Navigate to={fallback} replace /> : children
+function PublicRoute({ token, fallback, children }: RouteProps) {
+  return token ? <Navigate to={fallback} replace /> : children
 }
 
 function PageRouter() {
-  const [isAuth, setIsAuth] = useState<string>('')
+  const [token, setToken] = useState<string>('')
+
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) {
-      setIsAuth('')
+      setToken('')
       return
     }
-    setIsAuth(JSON.stringify(localStorage.getItem('accessToken')))
+    setToken(JSON.stringify(localStorage.getItem('accessToken')))
   }, [])
 
   return (
@@ -37,7 +38,7 @@ function PageRouter() {
         <Route
           path="/todo"
           element={
-            <ProtectedRoute isAuth={isAuth} fallback="/signin">
+            <ProtectedRoute token={token} fallback="/signin">
               <Todo />
             </ProtectedRoute>
           }
@@ -45,16 +46,16 @@ function PageRouter() {
         <Route
           path="/signin"
           element={
-            <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signin setIsAuth={setIsAuth} />
+            <PublicRoute token={token} fallback="/todo">
+              <Signin setToken={setToken} />
             </PublicRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signup setIsAuth={setIsAuth} />
+            <PublicRoute token={token} fallback="/todo">
+              <Signup setToken={setToken} />
             </PublicRoute>
           }
         />

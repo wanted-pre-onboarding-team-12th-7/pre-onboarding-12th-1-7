@@ -1,10 +1,10 @@
 export interface SignFormProps {
   isSignUp: boolean
-  setIsAuth: React.Dispatch<React.SetStateAction<string>>
+  setToken: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface SignProps {
-  setIsAuth: React.Dispatch<React.SetStateAction<string>>
+  setToken: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface SigninResponse {
