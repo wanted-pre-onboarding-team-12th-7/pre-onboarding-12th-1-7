@@ -5,8 +5,8 @@ function Home() {
   const navigate = useNavigate()
 
   return (
-    <StyledHome>
-      소개글~
+    <PageWrapper>
+      안녕하세요, 7팀의 투두리스트 프로젝트에 오신 것을 환영합니다!
       <ButtonWrapper>
         <SignButton
           isSignin={false}
@@ -30,21 +30,22 @@ function Home() {
             navigate('/todo')
           }}
         >
-          투두 테스트 버튼
+          투두리스트 구경하러 가기
         </SignButton>
       </ButtonWrapper>
-    </StyledHome>
+    </PageWrapper>
   )
 }
 
-const StyledHome = styled.div`
+const PageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
+  padding: 50px;
 `
 
 const ButtonWrapper = styled.div`
