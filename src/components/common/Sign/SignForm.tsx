@@ -2,7 +2,15 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { SignFormProps, SigninResponse } from './types'
-import { StyledSignFormContainer, StyledSignFormTitle, StyledSignFormBox } from './SignForm.styled'
+import {
+  StyledSignFormContainer,
+  StyledSignFormTitle,
+  StyledSignFormBox,
+  StyledSignFormInput,
+  StyledSignFormMsg,
+  StyledSignFormLinkWrap,
+  StyledSignFormButton,
+} from './SignForm.styled'
 import { postSignup, postSignin } from '../../../apis/auth'
 
 function SignForm({ isSignUp, setToken }: SignFormProps) {
@@ -61,19 +69,19 @@ function SignForm({ isSignUp, setToken }: SignFormProps) {
     <StyledSignFormContainer>
       <StyledSignFormTitle>{isSignUp ? '회원가입' : '로그인'}</StyledSignFormTitle>
       <StyledSignFormBox noValidate>
-        <input
+        <StyledSignFormInput
           data-testid="email-input"
           type="email"
           placeholder="이메일 주소"
           onChange={onChangeEmail}
         />
         {isValidEmail === true ? (
-          <p>사용가능한 이메일입니다.</p>
+          <StyledSignFormMsg className="pass">사용가능한 이메일입니다.</StyledSignFormMsg>
         ) : (
-          <p>이메일에는 @가 들어가야합니다.</p>
+          <StyledSignFormMsg>이메일에는 @가 들어가야합니다.</StyledSignFormMsg>
         )}
 
-        <input
+        <StyledSignFormInput
           data-testid="password-input"
           type="password"
           placeholder="비밀번호 (8자리 이상)"
@@ -81,23 +89,25 @@ function SignForm({ isSignUp, setToken }: SignFormProps) {
           autoComplete="false"
         />
         {isValidPassword === true ? (
-          <p>사용가능한 비밀번호입니다.</p>
+          <StyledSignFormMsg className="pass">사용가능한 비밀번호입니다.</StyledSignFormMsg>
         ) : (
-          <p>비밀번호는 8자 이상으로 입력해주세요.</p>
+          <StyledSignFormMsg>비밀번호는 8자 이상으로 입력해주세요.</StyledSignFormMsg>
         )}
 
-        <Link to={isSignUp ? '/signin' : '/signup'}>
-          {isSignUp ? '로그인 페이지로' : '회원가입 페이지로'}
-        </Link>
-        <Link to="/">홈으로</Link>
-
-        <button
+        <StyledSignFormButton
           data-testid={isSignUp ? 'signup-button' : 'signin-button'}
           disabled={!(isValidEmail && isValidPassword)}
           onClick={sendData}
         >
           {isSignUp ? '회원가입' : '로그인'}
-        </button>
+        </StyledSignFormButton>
+
+        <StyledSignFormLinkWrap>
+          <Link to={isSignUp ? '/signin' : '/signup'}>
+            {isSignUp ? '로그인 페이지로' : '회원가입 페이지로'}
+          </Link>
+          <Link to="/">홈으로</Link>
+        </StyledSignFormLinkWrap>
       </StyledSignFormBox>
     </StyledSignFormContainer>
   )
