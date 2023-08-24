@@ -23,11 +23,11 @@ function PublicRoute({ isAuth, fallback, children }: RouteProps) {
 function PageRouter() {
   const [isAuth, setIsAuth] = useState<string>('')
   useEffect(() => {
-    if (!localStorage.getItem('access_token')) {
+    if (!localStorage.getItem('accessToken')) {
       setIsAuth('')
       return
     }
-    setIsAuth(JSON.stringify(localStorage.getItem('access_token')))
+    setIsAuth(JSON.stringify(localStorage.getItem('accessToken')))
   }, [])
 
   return (
