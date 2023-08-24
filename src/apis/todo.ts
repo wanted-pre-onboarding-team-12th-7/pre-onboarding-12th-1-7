@@ -20,6 +20,6 @@ export const updateTodoRequest = async (
   return data
 }
 
-export const deleteTodoRequest = (id: number) => {
+export const deleteTodoRequest = async (id: number) => {
   return AuthInstance.delete(`/todos/${id}`)
 }
