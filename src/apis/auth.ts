@@ -1,8 +1,8 @@
-import { NoAuthInstance } from './instance'
+import { Instance } from './instance'
 
 export const postSignup = async (email: string, password: string) => {
   try {
-    return await NoAuthInstance.post('/auth/signup', { email, password })
+    return await Instance.post('/auth/signup', { email, password })
   } catch (err) {
     console.error(err)
     throw err
@@ -11,7 +11,7 @@ export const postSignup = async (email: string, password: string) => {
 
 export const postSignin = async (email: string, password: string) => {
   try {
-    return await NoAuthInstance.post(`/auth/signin`, { email, password })
+    return await Instance.post(`/auth/signin`, { email, password })
   } catch (err) {
     console.error(err)
     throw err
