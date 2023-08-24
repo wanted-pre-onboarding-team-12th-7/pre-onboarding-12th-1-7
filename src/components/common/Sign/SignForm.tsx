@@ -60,7 +60,7 @@ function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
   return (
     <StyledSignFormContainer>
       <StyledSignFormTitle>{isSignUp ? '회원가입' : '로그인'}</StyledSignFormTitle>
-      <StyledSignFormBox>
+      <StyledSignFormBox noValidate>
         <input
           data-testid="email-input"
           type="email"
