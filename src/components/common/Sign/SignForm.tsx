@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { StyledSignFormContainer, StyledSignFormTitle, StyledSignFormBox } from './SignForm.styled'
-import { postSignUp, postSignin } from '../../../apis/auth'
+import { postSignup, postSignin } from '../../../apis/auth'
 
 interface SignFormProps {
   isSignUp: boolean
@@ -34,7 +34,7 @@ function SignForm({ isSignUp, setIsAuth }: SignFormProps) {
       password: password,
     }
     if (isSignUp) {
-      postSignUp(data.email, data.password)
+      postSignup(data.email, data.password)
         .then(() => {
           alert('회원가입 완료!')
           navigate('/signin')
