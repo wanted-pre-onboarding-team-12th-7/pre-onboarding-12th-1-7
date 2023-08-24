@@ -1,28 +1,12 @@
-import { useNavigate } from 'react-router-dom'
-import { styled } from 'styled-components'
+import SignForm from '../components/common/Sign/SignForm'
+import { SignProps } from '../components/common/Sign/types'
 
-function Signup() {
-  const navigate = useNavigate()
-
+function Signup({ setIsAuth }: SignProps) {
   return (
     <div>
-      회원가입 페이지입니다
-      <SampleButton
-        onClick={() => {
-          navigate('/')
-        }}
-      >
-        홈으로
-      </SampleButton>
+      <SignForm isSignUp={true} setIsAuth={setIsAuth} />
     </div>
   )
 }
-
-const SampleButton = styled.div`
-  width: fit-content;
-  height: fit-content;
-  background-color: skyblue;
-  cursor: pointer;
-`
 
 export default Signup

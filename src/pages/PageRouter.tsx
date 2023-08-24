@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Navigate, Route, BrowserRouter, Routes } from 'react-router-dom'
 
 import Home from './Home'
@@ -19,7 +20,14 @@ function PublicRoute({ isAuth, fallback, children }: RouteProps) {
 }
 
 function PageRouter() {
-  const isAuth = localStorage.getItem('access_token')
+  const [isAuth, setIsAuth] = useState<string>('')
+  useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      setIsAuth('')
+      return
+    }
+    setIsAuth(JSON.stringify(localStorage.getItem('access_token')))
+  }, [])
 
   return (
     <BrowserRouter>
@@ -37,7 +45,7 @@ function PageRouter() {
           path="/signin"
           element={
             <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signin />
+              <Signin setIsAuth={setIsAuth} />
             </PublicRoute>
           }
         />
@@ -45,7 +53,7 @@ function PageRouter() {
           path="/signup"
           element={
             <PublicRoute isAuth={isAuth} fallback="/todo">
-              <Signup />
+              <Signup setIsAuth={setIsAuth} />
             </PublicRoute>
           }
         />
