@@ -24,9 +24,7 @@ function PageRouter() {
   const [token, setToken] = useState<string | null>('')
 
   useEffect(() => {
-    localStorage.getItem('accessToken') !== null
-      ? setToken('')
-      : setToken(localStorage.getItem('accessToken'))
+    if (localStorage.getItem('accessToken') !== null) setToken(localStorage.getItem('accessToken'))
   }, [])
 
   return (
