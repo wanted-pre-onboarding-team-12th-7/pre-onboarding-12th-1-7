@@ -94,15 +94,13 @@ const TodoListWrapper = styled.div`
 `
 
 const TodoListHead = styled.div`
+  ${({ theme }) => theme.common.flexCenter}
   margin-bottom: 24px;
-  display: flex;
-  align-items: center;
   gap: 10px;
 `
 const TodoListBody = styled.div`
-  display: flex;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
-  justify-content: center;
   overflow-y: auto;
 `
 
@@ -111,21 +109,21 @@ const StyledLabel = styled.label`
 `
 
 const StyledInput = styled.input`
-  border: 1px solid #9a9a9a;
   border-radius: 12px;
   padding: 8px 8px;
   margin-right: 12px;
   width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.gray};
 `
 const StyledButton = styled.button`
-  border: 1px solid #9a9a9a;
   border-radius: 12px;
   padding: 8px 8px;
+  background-color: ${({ theme }) => theme.colors.lightgray};
+  border: 1px solid ${({ theme }) => theme.colors.gray};
 `
 const FlexUl = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   gap: 10px;
 `

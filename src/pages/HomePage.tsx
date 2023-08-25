@@ -59,9 +59,7 @@ function HomePage() {
 }
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
   gap: 10px;
   width: 100%;
@@ -74,10 +72,9 @@ const SignButton = styled.button<{ isSignin: boolean }>`
   border: 1px solid gray;
   border-radius: 5px;
   cursor: pointer;
-
-  ${({ isSignin }) => css`
-    background-color: ${isSignin ? 'black' : 'white'};
-    color: ${isSignin ? 'white' : 'black'};
+  ${({ isSignin, theme }) => css`
+    background-color: ${isSignin ? theme.colors.black : theme.colors.white};
+    color: ${isSignin ? theme.colors.white : theme.colors.black};
   `}
 `
 

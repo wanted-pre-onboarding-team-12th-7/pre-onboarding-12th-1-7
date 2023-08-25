@@ -21,31 +21,28 @@ function NotFoundPage() {
 }
 
 const StyledNotFound = styled.div`
-  display: flex;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 5px;
   width: 100%;
   height: 100vh;
 `
 
 const StyledNumber = styled.span`
-  font-size: 72px;
+  font-size: ${({ theme }) => theme.fontSize.xxLarge};
 `
 
 const StyledTitle = styled.span`
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSize.xLarge};
 `
 
 const StyledComment = styled.span`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.large};
 `
 
 const StyledButton = styled.button`
   margin: 10px;
   padding: 5px 10px;
-  background-color: white;
   border: 0.5px solid black;
   border-radius: 10px;
   cursor: pointer;
