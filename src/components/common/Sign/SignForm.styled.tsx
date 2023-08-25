@@ -23,7 +23,6 @@ export const StyledSignFormInput = styled.input`
   height: 40px;
   margin: 20px 0 0;
   padding: 0 10px;
-
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.lightgray};
@@ -32,11 +31,9 @@ export const StyledSignFormInput = styled.input`
 export const StyledSignFormMsg = styled.p`
   padding: 0;
   margin: 10px 0 0;
-
   ${({ theme }) => css`
     font-size: ${theme.fontSize.small};
     color: ${theme.colors.red};
-
     &.pass {
       color: ${theme.colors.blue};
     }
@@ -48,7 +45,6 @@ export const StyledSignFormButton = styled.button`
   width: 100%;
   height: 40px;
   border: 0;
-
   ${({ theme }) => css`
     font-size: ${theme.fontSize.medium};
     color: ${theme.colors.white};
@@ -63,11 +59,9 @@ export const StyledSignFormButton = styled.button`
 export const StyledSignFormLinkWrap = styled.div`
   ${({ theme }) => theme.common.flexCenter}
   margin-top: 30px;
-
   a {
     display: block;
     margin: 0 10px;
-
     &:hover {
       text-decoration: underline;
     }

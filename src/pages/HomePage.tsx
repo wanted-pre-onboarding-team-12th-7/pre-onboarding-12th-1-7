@@ -72,7 +72,6 @@ const SignButton = styled.button<{ isSignin: boolean }>`
   border: 1px solid gray;
   border-radius: 5px;
   cursor: pointer;
-
   ${({ isSignin, theme }) => css`
     background-color: ${isSignin ? theme.colors.black : theme.colors.white};
     color: ${isSignin ? theme.colors.white : theme.colors.black};

@@ -98,7 +98,6 @@ const Li = styled.li`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-
   border: 1px solid ${({ theme }) => theme.colors.gray};
 `
 const CheckboxSpanWrapper = styled.div`
@@ -108,7 +107,6 @@ const CheckboxSpanWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 10px;
-
   & > button {
     flex-shrink: 0;
   }

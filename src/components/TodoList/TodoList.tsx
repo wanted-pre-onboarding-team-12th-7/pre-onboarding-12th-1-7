@@ -113,13 +113,11 @@ const StyledInput = styled.input`
   padding: 8px 8px;
   margin-right: 12px;
   width: 100%;
-
   border: 1px solid ${({ theme }) => theme.colors.gray};
 `
 const StyledButton = styled.button`
   border-radius: 12px;
   padding: 8px 8px;
-
   background-color: ${({ theme }) => theme.colors.lightgray};
   border: 1px solid ${({ theme }) => theme.colors.gray};
 `
