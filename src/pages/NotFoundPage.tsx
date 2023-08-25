@@ -29,15 +29,15 @@ const StyledNotFound = styled.div`
 `
 
 const StyledNumber = styled.span`
-  font-size: 72px;
+  font-size: ${({ theme }) => theme.fontSize.xxLarge};
 `
 
 const StyledTitle = styled.span`
-  font-size: 32px;
+  font-size: ${({ theme }) => theme.fontSize.xLarge};
 `
 
 const StyledComment = styled.span`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.large};
 `
 
 const StyledButton = styled.button`

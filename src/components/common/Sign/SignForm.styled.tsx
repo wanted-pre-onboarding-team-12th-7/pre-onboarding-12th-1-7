@@ -9,7 +9,7 @@ export const StyledSignFormContainer = styled.div`
 
 export const StyledSignFormTitle = styled.div`
   margin-bottom: 30px;
-  font-size: 30px;
+  font-size: ${({ theme }) => theme.fontSize.xLarge};
   text-align: center;
 `
 
@@ -30,11 +30,11 @@ export const StyledSignFormInput = styled.input`
   `}
 `
 export const StyledSignFormMsg = styled.p`
-  font-size: 13px;
   padding: 0;
   margin: 10px 0 0;
 
   ${({ theme }) => css`
+    font-size: ${theme.fontSize.small};
     color: ${theme.colors.red};
 
     &.pass {
@@ -48,9 +48,9 @@ export const StyledSignFormButton = styled.button`
   width: 100%;
   height: 40px;
   border: 0;
-  font-size: 16px;
 
   ${({ theme }) => css`
+    font-size: ${theme.fontSize.medium};
     color: ${theme.colors.white};
     background-color: ${theme.colors.blue};
 

@@ -114,7 +114,7 @@ const ButtonWrapper = styled.div`
   }
 `
 const StyledButton = styled.button`
-  font-size: 0.8rem;
+  font-size: ${({ theme }) => theme.fontSize.small};
   padding: 2px 4px;
   border-radius: 2px;
 `
