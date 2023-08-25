@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SignFormProps, SigninResponse } from '../components/common/Sign/types'
+import { SigninResponse } from '../components/common/Sign/types'
 import { postSignin, postSignup } from '../apis/auth'
 import { useAuthContext } from '../AuthProvider'
 
-const useForm = ({ isSignUp }: SignFormProps) => {
+export type FormModeType = 'signin' | 'signup'
+
+const useForm = (mode: FormModeType) => {
   const navigate = useNavigate()
   const { updateAuth } = useAuthContext()
 
@@ -31,7 +33,7 @@ const useForm = ({ isSignUp }: SignFormProps) => {
       password: password,
     }
 
-    if (isSignUp) {
+    if (mode === 'signup') {
       postSignup(data.email, data.password)
         .then(() => {
           alert('회원가입 완료!')
@@ -60,7 +62,7 @@ const useForm = ({ isSignUp }: SignFormProps) => {
     sendData,
     isValidEmail,
     isValidPassword,
-  }
+  } as const
 }
 
 export default useForm
