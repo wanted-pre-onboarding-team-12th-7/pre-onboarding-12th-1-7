@@ -50,9 +50,7 @@ function SignForm({ isSignUp }: SignFormProps) {
           alert(message)
           console.error(err)
         })
-    }
-
-    if (isSignUp === false) {
+    } else {
       postSignin(data.email, data.password)
         .then((res: SigninResponse) => {
           updateAuth({ action: 'sign-in', tokenValue: res.data.access_token })
