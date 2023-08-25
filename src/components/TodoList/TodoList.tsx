@@ -8,8 +8,15 @@ import {
   updateTodoRequest,
   deleteTodoRequest,
 } from '../../apis/todo'
-import TodoListHead from '../TodoListHead/TodoListHead'
-import TodoListBody from '../TodoListBody/TodoListBody'
+import {
+  FlexUl,
+  StyledButton,
+  StyledInput,
+  StyledLabel,
+  StyledTodoListBody,
+  StyledTodoListHead,
+} from './TodoList.styled'
+import TodoItem from '../TodoItem/TodoItem'
 
 interface TodoContextType {
   todos: TodoType[]
@@ -66,6 +73,55 @@ function TodoList({ children }: PropsWithChildren) {
 }
 
 export default TodoList
+
+function TodoListHead() {
+  const [newTodo, setNewTodo] = useState('')
+  const { createTodo } = useTodoContext()
+
+  return (
+    <StyledTodoListHead>
+      <StyledLabel htmlFor="addTodo">
+        <StyledInput
+          id="addTodo"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          data-testid="new-todo-input"
+        />
+      </StyledLabel>
+      <StyledButton
+        onClick={() => {
+          createTodo(newTodo)
+          setNewTodo('')
+        }}
+        type="button"
+        data-testid="new-todo-add-button"
+      >
+        추가
+      </StyledButton>
+    </StyledTodoListHead>
+  )
+}
+
+function TodoListBody() {
+  const { todos, updateTodo, deleteTodo } = useTodoContext()
+
+  return (
+    <StyledTodoListBody>
+      <FlexUl>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            todo={todo.todo}
+            isCompleted={todo.isCompleted}
+            updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
+          />
+        ))}
+      </FlexUl>
+    </StyledTodoListBody>
+  )
+}
 
 export const useTodoContext = () => {
   const context = useContext(TodoContext)
