@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { styled } from 'styled-components'
-import { useTodoContext } from '../../TodoProvider'
+import { useTodoContext } from '../TodoList/TodoList'
 
 function TodoListHead() {
   const [newTodo, setNewTodo] = useState('')
