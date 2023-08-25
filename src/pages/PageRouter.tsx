@@ -21,7 +21,7 @@ function PublicRoute({ token, fallback, children }: RouteProps) {
 }
 
 function PageRouter() {
-  const [token, setToken] = useState<string | null>('')
+  const [token, setToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (localStorage.getItem('accessToken') !== null) setToken(localStorage.getItem('accessToken'))
@@ -30,7 +30,7 @@ function PageRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<Home token={token} />} />
         <Route
           path="/todo"
           element={

@@ -2,29 +2,50 @@ import { useNavigate } from 'react-router-dom'
 import { css, styled } from 'styled-components'
 import { PageWrapper } from './PageLayout'
 
-function Home() {
+interface HomeProps {
+  token: string | null
+}
+
+function Home({ token }: HomeProps) {
   const navigate = useNavigate()
+  const isAuthorized = token !== null && token !== ''
 
   return (
     <PageWrapper>
-      안녕하세요, 7팀의 투두리스트 프로젝트에 오신 것을 환영합니다!
+      {`안녕하세요 ${
+        isAuthorized ? '회원님' : '손님'
+      }, 7팀의 투두리스트 프로젝트에 오신 것을 환영합니다!`}
       <ButtonWrapper>
-        <SignButton
-          isSignin={false}
-          onClick={() => {
-            navigate('/signup')
-          }}
-        >
-          회원가입
-        </SignButton>
-        <SignButton
-          isSignin={true}
-          onClick={() => {
-            navigate('/signin')
-          }}
-        >
-          로그인
-        </SignButton>
+        {isAuthorized ? (
+          <SignButton
+            isSignin={true}
+            onClick={() => {
+              localStorage.removeItem('accessToken')
+              navigate(0)
+            }}
+          >
+            로그아웃
+          </SignButton>
+        ) : (
+          <>
+            <SignButton
+              isSignin={false}
+              onClick={() => {
+                navigate('/signup')
+              }}
+            >
+              회원가입
+            </SignButton>
+            <SignButton
+              isSignin={true}
+              onClick={() => {
+                navigate('/signin')
+              }}
+            >
+              로그인
+            </SignButton>
+          </>
+        )}
         <SignButton
           isSignin={true}
           onClick={() => {
