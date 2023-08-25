@@ -16,7 +16,7 @@
 - 안유림 (서기) : [@anyl92](https://github.com/anyl92)
 - 윤승록 (서기) : [@SeungrokYoon](https://github.com/SeungrokYoon)
 - 이선근 : [@5unk3n](https://github.com/5unk3n)
-- 이승원 (팀장) : [@salmontaker](hhttps://github.com/salmontaker)
+- 이승원 (팀장) : [@salmontaker](https://github.com/salmontaker)
 - 장현정 [@JangHyunjeong](https://github.com/JangHyunjeong)
 
 ## 개발 기간
@@ -56,6 +56,8 @@ npm start
 배포는 `Netlify` 서비스를 사용했습니다.
 
 `Netlify`로 SPA 앱을 배포할 때는 모든 경로 요청에 대해서 서버가 `index.html`에 접근할 수 있도록 설정해야하기 때문에 [`public/`](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/tree/main/public) 경로에 [`_redirect`](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/blob/main/public/_redirects) 파일을 추가했습니다.
+
+![TODO데모](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/97281800/3c2953da-da17-4ed9-a30e-502b417eef58)
 
 ## 아키텍쳐
 
@@ -110,7 +112,7 @@ src/
 
 #### TodoList 컴포넌트 설계 다이어그램
 
-![2023-08-25_5 33 09](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/97281800/341ac780-1028-4db5-911d-1821a457292a)
+![image](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/44149596/d7d75034-20d7-4879-9c70-51cbdcdce483)
 
 ## Best Practice
 
@@ -118,14 +120,14 @@ src/
 
 <!-- 인증 데이터 설계 -->
 
-- [라우트 전략 - ProtectedRoute](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#64841342c647489699e38f6c0f184826)
-
-- [AuthProvider를 사용해 리팩토링](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#36b357bd674042e39ee8be53b5c2c792)
-
 - [비동기 처리](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#48c233536b114a658410ab8bf959922a)
 
 - [폼 컴포넌트 설계](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#08c827f61bdb4ff48b2acc2b81592299)
 
+- [라우트 전략 - ProtectedRoute](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#64841342c647489699e38f6c0f184826)
+
+- [AuthProvider를 사용해 리팩토링](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#36b357bd674042e39ee8be53b5c2c792)
+
 ### TODO LIST
 
-- [투두 리스트](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#bd6f8469da7e4346964c71d4dc720f51)
+- [TodoList 컴포넌트 설계](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#bd6f8469da7e4346964c71d4dc720f51)
