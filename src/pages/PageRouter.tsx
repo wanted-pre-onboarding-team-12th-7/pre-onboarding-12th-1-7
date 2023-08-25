@@ -1,10 +1,10 @@
 import { Navigate, Route, BrowserRouter, Routes } from 'react-router-dom'
 
-import Home from './Home'
-import Todo from './Todo'
-import Signin from './Signin'
-import Signup from './Signup'
-import NotFound from './NotFound'
+import HomePage from './HomePage'
+import TodoPage from './TodoPage'
+import SigninPage from './SigninPage'
+import SignupPage from './SignupPage'
+import NotFoundPage from './NotFoundPage'
 import { useAuthContext } from '../AuthProvider'
 
 interface RouteProps {
@@ -26,12 +26,12 @@ function PageRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
+        <Route index element={<HomePage />} />
         <Route
           path="/todo"
           element={
             <ProtectedRoute fallback="/signin">
-              <Todo />
+              <TodoPage />
             </ProtectedRoute>
           }
         />
@@ -39,7 +39,7 @@ function PageRouter() {
           path="/signin"
           element={
             <PublicRoute fallback="/todo">
-              <Signin />
+              <SigninPage />
             </PublicRoute>
           }
         />
@@ -47,11 +47,11 @@ function PageRouter() {
           path="/signup"
           element={
             <PublicRoute fallback="/todo">
-              <Signup />
+              <SignupPage />
             </PublicRoute>
           }
         />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )

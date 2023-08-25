@@ -3,7 +3,7 @@ import TodoList from '../components/TodoList/TodoList'
 import { PageWrapper } from './PageLayout'
 import { useAuthContext } from '../AuthProvider'
 
-function Todo() {
+function TodoPage() {
   const { updateAuth } = useAuthContext()
 
   return (
@@ -23,7 +23,7 @@ function Todo() {
   )
 }
 
-export default Todo
+export default TodoPage
 
 const PageTitle = styled.h1`
   margin-bottom: 10px;
