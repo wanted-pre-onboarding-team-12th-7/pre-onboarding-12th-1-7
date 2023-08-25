@@ -21,10 +21,8 @@ function NotFoundPage() {
 }
 
 const StyledNotFound = styled.div`
-  display: flex;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 5px;
   width: 100%;
   height: 100vh;

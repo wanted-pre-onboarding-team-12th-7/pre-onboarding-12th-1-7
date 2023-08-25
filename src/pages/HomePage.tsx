@@ -59,9 +59,7 @@ function HomePage() {
 }
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
   gap: 10px;
   width: 100%;

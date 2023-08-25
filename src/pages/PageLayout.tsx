@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const PageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
   gap: 20px;
   width: 100%;

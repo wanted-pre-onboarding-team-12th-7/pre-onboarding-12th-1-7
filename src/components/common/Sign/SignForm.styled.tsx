@@ -61,8 +61,7 @@ export const StyledSignFormButton = styled.button`
 `
 
 export const StyledSignFormLinkWrap = styled.div`
-  display: flex;
-  justify-content: center;
+  ${({ theme }) => theme.common.flexCenter}
   margin-top: 30px;
 
   a {

@@ -94,15 +94,13 @@ const TodoListWrapper = styled.div`
 `
 
 const TodoListHead = styled.div`
+  ${({ theme }) => theme.common.flexCenter}
   margin-bottom: 24px;
-  display: flex;
-  align-items: center;
   gap: 10px;
 `
 const TodoListBody = styled.div`
-  display: flex;
+  ${({ theme }) => theme.common.flexCenter}
   flex-direction: column;
-  justify-content: center;
   overflow-y: auto;
 `
 
@@ -129,6 +127,5 @@ const FlexUl = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
   gap: 10px;
 `
