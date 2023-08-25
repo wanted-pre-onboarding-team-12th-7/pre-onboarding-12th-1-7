@@ -25,16 +25,7 @@
 
 ## 개발 환경
 
-<img src="https://img.shields.io/badge/Node.js v18 (LTS)-grey?style=flat-square&logo=nodedotjs">
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/styled component-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
-<img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React Router&logoColor=white">
-<img src="https://img.shields.io/badge/husky-brown?style=flat-square&logo=npm">
-<img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint">
-<img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=white">
-</br>
+<img src="https://img.shields.io/badge/Node.js v18 (LTS)-grey?style=flat-square&logo=nodedotjs"> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/> <img src="https://img.shields.io/badge/styled component-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React Router&logoColor=white"> <img src="https://img.shields.io/badge/husky-brown?style=flat-square&logo=npm"> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=white">
 
 ## 프로젝트 실행 방법
 
