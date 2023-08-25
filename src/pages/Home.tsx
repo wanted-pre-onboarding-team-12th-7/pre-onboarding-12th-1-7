@@ -2,19 +2,16 @@ import { useNavigate } from 'react-router-dom'
 import { css, styled } from 'styled-components'
 import { PageWrapper } from './PageLayout'
 import { ReactComponent as MainIcon } from '../assets/MainIcon.svg'
+import { useAuthContext } from '../AuthProvider'
 
-interface HomeProps {
-  token: string | null
-}
-
-function Home({ token }: HomeProps) {
+function Home() {
   const navigate = useNavigate()
+  const { token, updateAuth } = useAuthContext()
   const isAuthorized = token !== null && token !== ''
 
   return (
     <PageWrapper>
       <MainIcon />
-
       {`안녕하세요 ${
         isAuthorized ? '회원님' : '손님'
       }, 7팀의 투두리스트 프로젝트에 오신 것을 환영합니다!`}
@@ -23,8 +20,7 @@ function Home({ token }: HomeProps) {
           <SignButton
             isSignin={true}
             onClick={() => {
-              localStorage.removeItem('accessToken')
-              navigate(0)
+              updateAuth({ action: 'sign-out' })
             }}
           >
             로그아웃

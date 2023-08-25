@@ -12,13 +12,15 @@ import {
   StyledSignFormButton,
 } from './SignForm.styled'
 import { postSignup, postSignin } from '../../../apis/auth'
+import { useAuthContext } from '../../../AuthProvider'
 
-function SignForm({ isSignUp, setToken }: SignFormProps) {
+function SignForm({ isSignUp }: SignFormProps) {
+  const navigate = useNavigate()
+  const { updateAuth } = useAuthContext()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isValidEmail, setIsValidEmail] = useState(false)
   const [isValidPassword, setIsValidPassword] = useState(false)
-  const navigate = useNavigate()
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -46,20 +48,19 @@ function SignForm({ isSignUp, setToken }: SignFormProps) {
         .catch((err) => {
           const message = err.response.data.message
           alert(message)
-          console.log(err)
+          console.error(err)
         })
     }
 
     if (isSignUp === false) {
       postSignin(data.email, data.password)
         .then((res: SigninResponse) => {
-          localStorage.setItem('accessToken', res.data.access_token)
-          setToken(res.data.access_token)
+          updateAuth({ action: 'sign-in', tokenValue: res.data.access_token })
         })
         .catch((err) => {
           const message = err.response.data.message
           alert(message)
-          console.log(err)
+          console.error(err)
         })
     }
   }
