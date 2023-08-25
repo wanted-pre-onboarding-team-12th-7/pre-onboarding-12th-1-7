@@ -8,6 +8,8 @@ import {
   updateTodoRequest,
   deleteTodoRequest,
 } from '../../apis/todo'
+import TodoListHead from '../TodoListHead/TodoListHead'
+import TodoListBody from '../TodoListBody/TodoListBody'
 
 interface TodoContextType {
   todos: TodoType[]
@@ -72,3 +74,6 @@ export const useTodoContext = () => {
   }
   return context
 }
+
+TodoList.Head = TodoListHead
+TodoList.Body = TodoListBody

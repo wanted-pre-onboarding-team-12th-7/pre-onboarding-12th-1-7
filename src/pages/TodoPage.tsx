@@ -2,8 +2,6 @@ import { styled } from 'styled-components'
 import { PageWrapper } from './PageLayout'
 import { useAuthContext } from '../AuthProvider'
 import TodoList from '../components/TodoList/TodoList'
-import TodoListHead from '../components/TodoListHead/TodoListHead'
-import TodoListBody from '../components/TodoListBody/TodoListBody'
 
 function TodoPage() {
   const { updateAuth } = useAuthContext()
@@ -13,8 +11,8 @@ function TodoPage() {
       <PageTitle>투두리스트 페이지입니다.</PageTitle>
       <PageBody>
         <TodoList>
-          <TodoListHead />
-          <TodoListBody />
+          <TodoList.Head />
+          <TodoList.Body />
         </TodoList>
       </PageBody>
       <button
