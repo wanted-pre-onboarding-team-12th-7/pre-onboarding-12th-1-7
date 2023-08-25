@@ -1,6 +1,6 @@
 import SignForm from '../components/common/Sign/SignForm'
 
-function Signup() {
+function SignupPage() {
   return (
     <div>
       <SignForm isSignUp={true} />
@@ -8,4 +8,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default SignupPage

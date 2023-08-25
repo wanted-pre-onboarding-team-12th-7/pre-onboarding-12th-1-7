@@ -4,7 +4,7 @@ import { PageWrapper } from './PageLayout'
 import { ReactComponent as MainIcon } from '../assets/MainIcon.svg'
 import { useAuthContext } from '../AuthProvider'
 
-function Home() {
+function HomePage() {
   const navigate = useNavigate()
   const { token, updateAuth } = useAuthContext()
   const isAuthorized = token !== null && token !== ''
@@ -81,4 +81,4 @@ const SignButton = styled.button<{ isSignin: boolean }>`
   `}
 `
 
-export default Home
+export default HomePage
