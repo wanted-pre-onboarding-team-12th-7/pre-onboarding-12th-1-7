@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
-import { styled } from 'styled-components'
-
-import TodoItem from '../TodoItem/TodoItem'
+import { useEffect } from 'react'
+import { PropsWithChildren, createContext, useContext, useState } from 'react'
+import { AxiosError } from 'axios'
 import { TodoType } from './types'
 import {
   createTodoRequest,
@@ -9,17 +8,33 @@ import {
   updateTodoRequest,
   deleteTodoRequest,
 } from '../../apis/todo'
-import { AxiosError } from 'axios'
+import {
+  FlexUl,
+  StyledButton,
+  StyledInput,
+  StyledLabel,
+  StyledTodoListBody,
+  StyledTodoListHead,
+} from './TodoList.styled'
+import TodoItem from '../TodoItem/TodoItem'
 
-function TodoList() {
+interface TodoContextType {
+  todos: TodoType[]
+  createTodo: (todo: string) => void
+  getTodo: () => void
+  updateTodo: (id: number, todo: string, isCompleted: boolean) => void
+  deleteTodo: (id: number) => void
+}
+
+const TodoContext = createContext<TodoContextType | null>(null)
+
+function TodoList({ children }: PropsWithChildren) {
   const [todos, setTodos] = useState<TodoType[]>([])
-  const [newTodo, setNewTodo] = useState('')
 
   const createTodo = (todo: string) => {
     createTodoRequest(todo)
       .then((createdTodo) => {
         setTodos((prevTodos) => [...prevTodos, createdTodo])
-        setNewTodo('')
       })
       .catch((e: AxiosError) => alert(e))
   }
@@ -51,79 +66,70 @@ function TodoList() {
   }, [])
 
   return (
-    <TodoListWrapper>
-      <TodoListHead>
-        <StyledLabel htmlFor="addTodo">
-          <StyledInput
-            id="addTodo"
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-            data-testid="new-todo-input"
-          />
-        </StyledLabel>
-        <StyledButton
-          onClick={() => createTodo(newTodo)}
-          type="button"
-          data-testid="new-todo-add-button"
-        >
-          추가
-        </StyledButton>
-      </TodoListHead>
-      <TodoListBody>
-        <FlexUl>
-          {todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              todo={todo.todo}
-              isCompleted={todo.isCompleted}
-              updateTodo={updateTodo}
-              deleteTodo={deleteTodo}
-            />
-          ))}
-        </FlexUl>
-      </TodoListBody>
-    </TodoListWrapper>
+    <TodoContext.Provider value={{ todos, createTodo, getTodo, updateTodo, deleteTodo }}>
+      {children}
+    </TodoContext.Provider>
   )
 }
 
 export default TodoList
 
-const TodoListWrapper = styled.div`
-  width: 100%;
-`
+function TodoListHead() {
+  const [newTodo, setNewTodo] = useState('')
+  const { createTodo } = useTodoContext()
 
-const TodoListHead = styled.div`
-  ${({ theme }) => theme.common.flexCenter}
-  margin-bottom: 24px;
-  gap: 10px;
-`
-const TodoListBody = styled.div`
-  ${({ theme }) => theme.common.flexCenter}
-  flex-direction: column;
-  overflow-y: auto;
-`
+  return (
+    <StyledTodoListHead>
+      <StyledLabel htmlFor="addTodo">
+        <StyledInput
+          id="addTodo"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+          data-testid="new-todo-input"
+        />
+      </StyledLabel>
+      <StyledButton
+        onClick={() => {
+          createTodo(newTodo)
+          setNewTodo('')
+        }}
+        type="button"
+        data-testid="new-todo-add-button"
+      >
+        추가
+      </StyledButton>
+    </StyledTodoListHead>
+  )
+}
 
-const StyledLabel = styled.label`
-  flex-grow: 1;
-`
+function TodoListBody() {
+  const { todos, updateTodo, deleteTodo } = useTodoContext()
 
-const StyledInput = styled.input`
-  border-radius: 12px;
-  padding: 8px 8px;
-  margin-right: 12px;
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.gray};
-`
-const StyledButton = styled.button`
-  border-radius: 12px;
-  padding: 8px 8px;
-  background-color: ${({ theme }) => theme.colors.lightgray};
-  border: 1px solid ${({ theme }) => theme.colors.gray};
-`
-const FlexUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-`
+  return (
+    <StyledTodoListBody>
+      <FlexUl>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            todo={todo.todo}
+            isCompleted={todo.isCompleted}
+            updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
+          />
+        ))}
+      </FlexUl>
+    </StyledTodoListBody>
+  )
+}
+
+export const useTodoContext = () => {
+  const context = useContext(TodoContext)
+  if (context === null) {
+    throw new Error('Context is null!')
+  }
+  return context
+}
+
+TodoList.Head = TodoListHead
+TodoList.Body = TodoListBody
