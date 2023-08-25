@@ -31,7 +31,7 @@ function AuthProvider({ children }: PropsWithChildren) {
     }
     if (param.action === 'sign-out') {
       localStorage.removeItem(TOKEN_KEY_STR)
-      setToken(() => null)
+      setToken(null)
       return
     }
   }
