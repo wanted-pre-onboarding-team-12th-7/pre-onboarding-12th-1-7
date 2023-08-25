@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledSignFormContainer = styled.div`
   width: calc(100% - 40px);
@@ -23,32 +23,41 @@ export const StyledSignFormInput = styled.input`
   height: 40px;
   margin: 20px 0 0;
   padding: 0 10px;
-  border: 1px solid #ddd;
-  background-color: #fff;
+
+  ${({ theme }) => css`
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.lightgray};
+  `}
 `
 export const StyledSignFormMsg = styled.p`
   font-size: 13px;
   padding: 0;
   margin: 10px 0 0;
-  color: red;
 
-  &.pass {
-    color: blue;
-  }
+  ${({ theme }) => css`
+    color: ${theme.colors.red};
+
+    &.pass {
+      color: ${theme.colors.blue};
+    }
+  `}
 `
 export const StyledSignFormButton = styled.button`
   display: block;
   margin-top: 30px;
   width: 100%;
   height: 40px;
-  background-color: blue;
-  color: white;
   border: 0;
   font-size: 16px;
 
-  &:disabled {
-    background-color: darkgray;
-  }
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.blue};
+
+    &:disabled {
+      background-color: ${theme.colors.gray};
+    }
+  `}
 `
 
 export const StyledSignFormLinkWrap = styled.div`

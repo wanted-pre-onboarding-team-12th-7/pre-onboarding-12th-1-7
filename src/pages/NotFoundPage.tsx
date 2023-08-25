@@ -45,7 +45,6 @@ const StyledComment = styled.span`
 const StyledButton = styled.button`
   margin: 10px;
   padding: 5px 10px;
-  background-color: white;
   border: 0.5px solid black;
   border-radius: 10px;
   cursor: pointer;

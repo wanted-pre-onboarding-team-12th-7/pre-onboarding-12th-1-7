@@ -3,6 +3,7 @@ export interface Colors {
   white: string
   red: string
   blue: string
+  lightgray: string
   gray: string
 }
 
@@ -10,7 +11,8 @@ const colors: Colors = {
   black: '#333835',
   white: '#FFFFFF',
   red: '#FF3838',
-  blue: '#8FD3F4',
+  blue: '#8BBAD1',
+  lightgray: '#E6E4E2',
   gray: '#CCCAC8',
 }
 

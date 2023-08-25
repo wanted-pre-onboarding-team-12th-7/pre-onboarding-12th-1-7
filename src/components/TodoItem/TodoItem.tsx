@@ -98,7 +98,8 @@ const Li = styled.li`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  border: 2px solid black;
+
+  border: 1px solid ${({ theme }) => theme.colors.gray};
 `
 const CheckboxSpanWrapper = styled.div`
   max-width: 50%;
