@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TodoItemProps from './types'
+import { TodoItemProps } from './types'
 import styled from 'styled-components'
 
 function TodoItem({ id, todo, isCompleted, updateTodo, deleteTodo }: TodoItemProps) {
