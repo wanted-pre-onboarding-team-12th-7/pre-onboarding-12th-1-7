@@ -1,5 +1,9 @@
 # 프리온보딩 7팀 TODO LIST
 
+![MainIcon](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/97281800/e1f052bb-1d7c-4e8b-8143-07ffe113c9b4)
+
+7팀의 협업은 이렇게 진행되고 있어요! [궁금하다면 클릭!](https://www.notion.so/sonicrok/7-5fcce41bb3594680b16862082dd0324d)
+
 ## 프로젝트 소개
 
 원티드 프리온보딩 프론트엔드 - 선발 과제 내용을 구현한 Todolist 프로젝트입니다!
@@ -68,7 +72,7 @@ npm start
 
 ```
 src/
-├── components/
+├── components  /
 │   ├── common/
 │   │   └── 공통 컴포넌트
 │   └── 일반 UI컴포넌트/
@@ -87,6 +91,11 @@ src/
 │   ├── instance.ts
 │   ├── auth.ts
 │   └── todo.ts
+├── styles/
+│   ├── DefaultTheme.ts
+│   ├── font.ts
+│   ├── colors.ts
+│   └── fontsize.ts
 └── assets/
     └── 이미지, 아이콘 리소스 파일
 ```
@@ -100,15 +109,32 @@ src/
 
 ※ 로그인 여부에 따라 리다이렉팅 됩니다.
 
-### 인증 플로우 차트
+#### 라우트 및 인증 정보 데이터 설계 다이어그램
 
-### 핵심 컴포넌트 설계 다이어그램
+![image](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/97281800/b4cfcfd3-b451-499e-beb4-c353b9a94046)
 
-- Form
-- TodoList
+#### 회원가입, 로그인 Form 설계 다이어그램
+
+![image](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/44149596/6d856380-9843-49d7-8f66-56050fec6ee8)
+
+#### TodoList 컴포넌트 설계 다이어그램
+
+![2023-08-25_5 33 09](https://github.com/wanted-pre-onboarding-team-12th-7/pre-onboarding-12th-1-7/assets/97281800/341ac780-1028-4db5-911d-1821a457292a)
 
 ## Best Practice
 
 ### 로그인/회원가입
 
+<!-- 인증 데이터 설계 -->
+
+- [라우트 전략 - ProtectedRoute](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#64841342c647489699e38f6c0f184826)
+
+- [AuthProvider를 사용해 리팩토링](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#36b357bd674042e39ee8be53b5c2c792)
+
+- [비동기 처리](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#48c233536b114a658410ab8bf959922a)
+
+- [폼 컴포넌트 설계](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#08c827f61bdb4ff48b2acc2b81592299)
+
 ### TODO LIST
+
+- [투두 리스트](https://www.notion.so/sonicrok/1-0fe82e20f8124d1eac79eb641d7cdcd8?pvs=4#bd6f8469da7e4346964c71d4dc720f51)
