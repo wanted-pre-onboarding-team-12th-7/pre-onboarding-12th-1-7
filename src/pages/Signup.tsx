@@ -1,10 +1,9 @@
 import SignForm from '../components/common/Sign/SignForm'
-import { SignProps } from '../components/common/Sign/types'
 
-function Signup({ setToken }: SignProps) {
+function Signup() {
   return (
     <div>
-      <SignForm isSignUp={true} setToken={setToken} />
+      <SignForm isSignUp={true} />
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Navigate, Route, BrowserRouter, Routes } from 'react-router-dom'
 
 import Home from './Home'
@@ -6,35 +5,32 @@ import Todo from './Todo'
 import Signin from './Signin'
 import Signup from './Signup'
 import NotFound from './NotFound'
+import { useAuthContext } from '../AuthProvider'
 
 interface RouteProps {
-  token: string | null
   fallback: string
   children: JSX.Element
 }
 
-function ProtectedRoute({ token, fallback, children }: RouteProps) {
+function ProtectedRoute({ fallback, children }: RouteProps) {
+  const { token } = useAuthContext()
   return token ? children : <Navigate to={fallback} replace />
 }
-function PublicRoute({ token, fallback, children }: RouteProps) {
+
+function PublicRoute({ fallback, children }: RouteProps) {
+  const { token } = useAuthContext()
   return token ? <Navigate to={fallback} replace /> : children
 }
 
 function PageRouter() {
-  const [token, setToken] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (localStorage.getItem('accessToken') !== null) setToken(localStorage.getItem('accessToken'))
-  }, [])
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home token={token} />} />
+        <Route index element={<Home />} />
         <Route
           path="/todo"
           element={
-            <ProtectedRoute token={token} fallback="/signin">
+            <ProtectedRoute fallback="/signin">
               <Todo />
             </ProtectedRoute>
           }
@@ -42,16 +38,16 @@ function PageRouter() {
         <Route
           path="/signin"
           element={
-            <PublicRoute token={token} fallback="/todo">
-              <Signin setToken={setToken} />
+            <PublicRoute fallback="/todo">
+              <Signin />
             </PublicRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            <PublicRoute token={token} fallback="/todo">
-              <Signup setToken={setToken} />
+            <PublicRoute fallback="/todo">
+              <Signup />
             </PublicRoute>
           }
         />

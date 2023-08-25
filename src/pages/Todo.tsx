@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
 import TodoList from '../components/TodoList/TodoList'
 import { PageWrapper } from './PageLayout'
+import { useAuthContext } from '../AuthProvider'
 
 function Todo() {
-  const navigate = useNavigate()
+  const { updateAuth } = useAuthContext()
 
   return (
     <PageWrapper>
@@ -14,8 +14,7 @@ function Todo() {
       </PageBody>
       <button
         onClick={() => {
-          localStorage.removeItem('accessToken')
-          navigate(0)
+          updateAuth({ action: 'sign-out' })
         }}
       >
         로그아웃

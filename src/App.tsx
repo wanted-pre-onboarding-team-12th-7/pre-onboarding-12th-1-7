@@ -1,5 +1,6 @@
 import { createGlobalStyle, styled } from 'styled-components'
 import PageRouter from './pages/PageRouter'
+import AuthProvider from './AuthProvider'
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -28,10 +29,12 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <CommonLayout>
-      <GlobalStyle />
-      <PageRouter />
-    </CommonLayout>
+    <AuthProvider>
+      <CommonLayout>
+        <GlobalStyle />
+        <PageRouter />
+      </CommonLayout>
+    </AuthProvider>
   )
 }
 
